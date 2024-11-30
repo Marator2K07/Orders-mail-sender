@@ -5,13 +5,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         textarea {
-            height: 222px; /* Измените высоту по необходимости */
+            height: 222px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Главная страница</h1>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -25,10 +35,10 @@
             </div>
         @endif
 
-        <form method="POST" action="/">
+        <form method="POST" action="/send_order">
             @csrf
             <div class="form-group">
-                <label for="orderData">Введите JSON данные для заказа:</label>
+                <label for="orderData">Введите JSON данные заказа:</label>
                 <textarea class="form-control" id="orderData" name="orderData" rows="11">
 
                 </textarea>
