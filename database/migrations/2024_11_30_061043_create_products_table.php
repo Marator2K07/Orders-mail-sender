@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->decimal('price', 8, 2); // decimal для хранения цены с плавающей точкой
-            $table->integer('quantity');
             $table->timestamps();
         });
     }
