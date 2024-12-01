@@ -13,7 +13,7 @@ class ClientValidator
             'lastName' => 'required|string|max:255',
             'phone' => 'required|string|regex:/^\+?[0-9\s()-]+/i',
             'email' => 'required|email|max:255|unique:clients',
-            'new' => 'required|in:Y,N',
+            'new' => 'in:Y,N',
         ]);
     }
 }

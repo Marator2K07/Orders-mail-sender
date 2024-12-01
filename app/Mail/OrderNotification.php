@@ -14,10 +14,10 @@ class OrderNotification extends Mailable
 
     private function selectView(): string
     {
-        $clientIsNew = $this->data['client']['new'] === 'Y';
+        $clientIsNew = $this->data['client']['new'] ?? null;
         $orderStatus = $this->data['order']['status'];
 
-        if ($clientIsNew) {
+        if ($clientIsNew === 'Y') {
             return 'emails.order_notification_new_client';
         } elseif ($orderStatus === 'new') {
             return 'emails.order_notification_status_new';
