@@ -2,10 +2,14 @@
 
 namespace App\Mail;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
 
 class OrderNotification extends Mailable
 {
+    use Queueable, SerializesModels;
+
     private $data;
 
     private function selectView(): string

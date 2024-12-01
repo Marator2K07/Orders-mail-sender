@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\OrderMailService;
 use App\Validators\ClientValidator;
 use App\Validators\OrderValidator;
 use App\Validators\ProductValidator;
@@ -14,7 +15,8 @@ class OrderController extends Controller
         Request $request,
         ClientValidator $clientValidator,
         OrderValidator $orderValidator,
-        ProductValidator $productValidator
+        ProductValidator $productValidator,
+        OrderMailService $orderMailService
     ): mixed {
         try {
             $data = json_decode($request->input('orderData'), true);
@@ -36,6 +38,8 @@ class OrderController extends Controller
                     return redirect()->back()->withErrors($productValidationRes->errors());
                 }
             }
+
+            $orderMailService->send($data['client']['email'], $data);
 
             return redirect()->back()->with('success', 'Letter has been sent successfully!');
         } catch (\Throwable $th) {
