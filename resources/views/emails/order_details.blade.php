@@ -1,3 +1,5 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
+
 <p>Номер заказа: {{ $data['order']['id'] }}</p>
 <p>Дата: {{ \Carbon\Carbon::parse($data['order']['date'])->format('d.m.Y H:i:s') }}</p>
 <p>Статус: {{ $data['order']['status'] }}</p>

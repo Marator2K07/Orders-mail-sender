@@ -1,3 +1,5 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
+
 <h1>Новый заказ</h1>
 
 <p>Телефон клиента: {{ preg_replace('/[^0-9]/', '', $data['client']['phone']) }}</p>
