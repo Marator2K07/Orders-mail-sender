@@ -42,13 +42,26 @@
    
 5) Заменяем пример файла окружения на нормальную версию командой (или переименовываем вручную):
   
-       mv .env.example .env 
+       mv .env.example .env
 
-6) Устанавливаем ключ приложения:
+6) Обновляем данные, связанные с бд в файле окружения (.env) для корректной работы проекта Laravel, пример для mysql:
+
+       DB_CONNECTION=mysql
+       DB_HOST=127.0.0.1
+       DB_PORT=3306
+       DB_DATABASE=orders_db
+       DB_USERNAME=root
+       DB_PASSWORD=root
+
+7) Не забываем про миграции:
+
+       php artisan migrate
+
+9) Устанавливаем ключ приложения:
 
        php artisan key:generate 
 
-7) Запускаем приложение с помощью artisan:
+10) Запускаем приложение с помощью artisan:
 
         php artisan serve
 
